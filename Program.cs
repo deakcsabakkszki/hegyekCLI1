@@ -37,6 +37,18 @@ namespace hegyekCLI1
 
             MagasabbMint950();
 
+            //11.feladat
+            Console.WriteLine("Kérem a keresett szót:");
+            string bekert = Console.ReadLine();
+            Console.WriteLine("......");
+            foreach(var item in Hegycsucsok)
+            {
+                if(tartalmaz(bekert, item.csucsNev, item.hegyseg))
+                {
+                    Console.WriteLine(item.csucsNev);
+                }
+            }
+
         }
 
         private static void MagasabbMint950()
