@@ -62,7 +62,7 @@ namespace hegyekCLI1
             }
         }
 
-        private static bool tartalmaz(string beirtSzo, string hegyCsucsNeve, string hegysegNeve)
+        public static bool tartalmaz(string beirtSzo, string hegyCsucsNeve, string hegysegNeve)
         {
             if (hegysegNeve.Contains(beirtSzo) || hegyCsucsNeve.Contains(beirtSzo))
             {
