@@ -1,4 +1,6 @@
-﻿namespace hegyekCLI1
+﻿using System.Text.Json;
+
+namespace hegyekCLI1
 {
 
     public class Hegycsus
@@ -23,9 +25,41 @@
     }
     public class Program
     {
+        public static List<Hegycsus> Hegycsucsok = new List<Hegycsus>();
         static void Main(string[] args)
         {
             
+            var Adatok = File.ReadAllLines("hegyek.csv").Skip(1);
+            foreach(var line in Adatok)
+            {
+                Hegycsucsok.Add(new Hegycsus(line));
+            }
+
+            MagasabbMint950();
+
+        }
+
+        private static void MagasabbMint950()
+        {
+            foreach (var hegycsucs in Hegycsucsok)
+            {
+                if (hegycsucs.magassag>950)
+                {
+                    Console.WriteLine($"{hegycsucs.csucsNev} {hegycsucs.hegyseg} {hegycsucs.magassag}");
+                }
+            }
+        }
+
+        private static bool tartalmaz(string beirtSzo, string hegyCsucsNeve, string hegysegNeve)
+        {
+            if (hegysegNeve.Contains(beirtSzo) || hegyCsucsNeve.Contains(beirtSzo))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
